@@ -88,6 +88,8 @@
       padding: 8rem 4rem 4rem;
       position: relative;
       overflow: hidden;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     .hero-grid-bg {
@@ -98,6 +100,8 @@
         linear-gradient(90deg, rgba(0,245,196,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       animation: gridShift 20s linear infinite;
+      pointer-events: none;
+      z-index: 0;
     }
 
     @keyframes gridShift {
@@ -294,6 +298,7 @@
       padding: 6rem 4rem;
       max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .section-label {
@@ -316,6 +321,9 @@
       height: 1px;
       background: var(--border);
       margin: 0 4rem;
+      max-width: 1300px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* ── SKILLS ── */
@@ -424,6 +432,146 @@
       letter-spacing: 0.05em;
     }
 
+    /* ── ROADMAP ── */
+    .roadmap {
+      position: relative;
+      padding: 0;
+    }
+
+    .roadmap-track {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .roadmap-track::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+
+    .roadmap-step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      position: relative;
+    }
+
+    .roadmap-dot-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .roadmap-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: border-color 0.3s;
+    }
+
+    .roadmap-dot.active {
+      border-color: var(--accent);
+      background: rgba(0,245,196,0.1);
+      box-shadow: 0 0 12px rgba(0,245,196,0.3);
+    }
+
+    .roadmap-dot.active::after {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .roadmap-dot.future { border-color: #2a2a3e; }
+    .roadmap-dot.future::after {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+
+    .roadmap-dot.goal {
+      border-color: var(--accent2);
+      background: rgba(123,97,255,0.1);
+      box-shadow: 0 0 16px rgba(123,97,255,0.3);
+      width: 24px; height: 24px;
+    }
+
+    .roadmap-dot.goal::after {
+      content: '★';
+      font-size: 10px;
+      color: var(--accent2);
+    }
+
+    .roadmap-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .roadmap-card:hover {
+      border-color: rgba(0,245,196,0.2);
+      transform: translateX(4px);
+    }
+
+    .roadmap-card.active-card {
+      border-color: rgba(0,245,196,0.3);
+      background: rgba(0,245,196,0.03);
+    }
+
+    .roadmap-card.goal-card {
+      border-color: rgba(123,97,255,0.3);
+      background: rgba(123,97,255,0.04);
+    }
+
+    .roadmap-phase {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .roadmap-phase.now { color: var(--accent); }
+    .roadmap-phase.next { color: #f0c060; }
+    .roadmap-phase.later { color: var(--muted); }
+    .roadmap-phase.goal { color: var(--accent2); }
+
+    .roadmap-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .roadmap-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .roadmap-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+    }
+
     /* ── CONTACT ── */
     .contact-section {
       text-align: center;
@@ -518,10 +666,69 @@
       transform: translateY(0);
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── DESKTOP ENHANCEMENTS ── */
+    @media (min-width: 1024px) {
+      nav { padding: 1.2rem 6rem; }
+
+      .hero {
+        padding: 10rem 6rem 6rem;
+        gap: 4rem;
+        grid-template-columns: 1.1fr 0.9fr;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      h1 { font-size: 5rem; }
+
+      .hero-bio { font-size: 1.1rem; max-width: 480px; }
+
+      .terminal { max-width: 500px; }
+      .terminal-body { font-size: 0.85rem; padding: 2rem; }
+
+      section {
+        padding: 7rem 6rem;
+        max-width: 1300px;
+      }
+
+      .divider { margin: 0 6rem; }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .about-grid { gap: 6rem; }
+
+      .roadmap-track { max-width: 860px; }
+
+      .roadmap-step { grid-template-columns: 80px 1fr; gap: 2rem; padding: 2rem 0; }
+
+      .roadmap-card { padding: 1.75rem 2rem; }
+
+      .roadmap-role { font-size: 1.2rem; }
+
+      .roadmap-desc { font-size: 0.88rem; }
+
+      .contact-section { padding: 8rem 6rem; }
+
+      footer { padding: 2rem 6rem; }
+    }
+
+    @media (min-width: 1440px) {
+      nav { padding: 1.4rem 8rem; }
+      .hero { padding: 10rem 8rem 6rem; max-width: 1600px; }
+      section { padding: 8rem 8rem; max-width: 1440px; }
+      .divider { margin: 0 8rem; }
+      .skills-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+      footer { padding: 2rem 8rem; }
+      .contact-section { padding: 8rem; }
+    }
+
+    /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.65rem; }
       .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 3rem; }
       .hero-visual { justify-content: flex-start; }
       section { padding: 4rem 1.5rem; }
@@ -529,6 +736,7 @@
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
       .contact-section { padding: 4rem 1.5rem; }
+      .roadmap-track::before { left: 24px; }
     }
   </style>
 </head>
@@ -540,15 +748,17 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
+<div style="position:relative; overflow:hidden;">
+<div class="hero-grid-bg"></div>
+<div class="hero-glow"></div>
+<div class="hero-glow2"></div>
 <div class="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
 
   <div class="hero-content">
     <div class="hero-tag">Available for Opportunities</div>
@@ -557,7 +767,7 @@
       <span class="name-line">Ginu R S</span>
     </h1>
     <p class="hero-bio">
-      <strong>1st-year B.Tech student</strong> with a passion for the <strong>Data Engineering</strong> field. Building a foundation in data systems, pipelines, and the tools that power modern analytics.
+      <strong>1st-year B.Tech student</strong> on a deliberate path to becoming a <strong>Cloud Architect</strong>. Starting from Data Engineering, I'm building expertise layer by layer — data systems, cloud infrastructure, and scalable architecture design.
     </p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Get in Touch</a>
@@ -592,7 +802,7 @@
       </div>
     </div>
   </div>
-</div>
+</div><!-- end hero wrapper -->
 
 <div class="divider"></div>
 
@@ -604,13 +814,16 @@
   <div class="about-grid reveal">
     <div class="about-text">
       <p>
-        I'm <strong>Reshin Ginu R S</strong>, a first-year B.Tech student on a journey into the world of <strong>Data Engineering</strong>. I'm fascinated by how raw data is collected, transformed, and made useful at scale.
+        I'm <strong>Reshin Ginu R S</strong>, a first-year B.Tech student with a crystal-clear vision: to become a <strong>Cloud Architect</strong>. My journey is intentional and structured — every skill I build today is a stepping stone toward designing enterprise-grade cloud systems tomorrow.
       </p>
       <p>
-        My interest lies in building <strong>reliable data pipelines</strong>, working with databases, and understanding the infrastructure that powers data-driven decisions. I'm currently deepening my foundations in Python, SQL, and data tooling.
+        I'm starting where the data lives. As an aspiring <strong>Data Engineer</strong>, I'm mastering the art of building reliable pipelines, working with SQL and Python, and understanding how data flows from raw sources to meaningful insights. This foundation is non-negotiable for anyone who wants to architect systems at scale.
       </p>
       <p>
-        I believe in <strong>learning by building</strong> — every project is an opportunity to understand systems more deeply. I'm actively looking for internships, collaborations, and mentors in the data space.
+        From there, my roadmap takes me through <strong>Cloud Engineering</strong> — deploying and managing cloud infrastructure on platforms like AWS or Azure — and then into <strong>Cloud DevOps</strong>, where I'll learn to automate, monitor, and secure large-scale systems. Each role builds on the last, turning depth into breadth.
+      </p>
+      <p>
+        The destination is <strong>Cloud Architecture</strong> — designing fault-tolerant, cost-efficient, and scalable infrastructure that powers modern products. I believe the best architects are those who've actually built and broken systems at every layer. That's the path I'm on.
       </p>
     </div>
 
@@ -714,10 +927,122 @@
 
 <div class="divider"></div>
 
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-label">03 / career roadmap</div>
+  <div class="section-title">My Path to Cloud Architect</div>
+  <p style="color:var(--muted); font-size:0.9rem; margin-bottom:3rem; max-width:560px; line-height:1.7;">
+    Every great architect was once an engineer who understood the details. Here's my deliberate, layered journey from where I am today to where I'm headed.
+  </p>
+
+  <div class="roadmap-track">
+
+    <!-- Step 1: NOW -->
+    <div class="roadmap-step reveal">
+      <div class="roadmap-dot-wrap">
+        <div class="roadmap-dot active"></div>
+      </div>
+      <div class="roadmap-card active-card">
+        <div class="roadmap-phase now">▶ Now — Phase 01</div>
+        <div class="roadmap-role">Data Engineer</div>
+        <div class="roadmap-desc">Building the foundation. Learning how data is ingested, stored, transformed, and served. A strong data engineering base is the bedrock of cloud expertise — you can't architect what you don't understand at the pipeline level.</div>
+        <div class="roadmap-skills">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">ETL Pipelines</span>
+          <span class="tag">Apache Spark</span>
+          <span class="tag">Airflow</span>
+          <span class="tag">Data Warehousing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="roadmap-step reveal">
+      <div class="roadmap-dot-wrap">
+        <div class="roadmap-dot future"></div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-phase next">→ Phase 02</div>
+        <div class="roadmap-role">Cloud Data Engineer</div>
+        <div class="roadmap-desc">Moving pipelines to the cloud. Mastering managed services like AWS Glue, BigQuery, Azure Data Factory — and understanding how to build data platforms that are scalable, reliable, and cost-efficient on cloud infrastructure.</div>
+        <div class="roadmap-skills">
+          <span class="tag">AWS / Azure / GCP</span>
+          <span class="tag">Cloud Storage</span>
+          <span class="tag">Serverless</span>
+          <span class="tag">Data Lakes</span>
+          <span class="tag">Terraform basics</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="roadmap-step reveal">
+      <div class="roadmap-dot-wrap">
+        <div class="roadmap-dot future"></div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-phase next">→ Phase 03</div>
+        <div class="roadmap-role">Cloud / DevOps Engineer</div>
+        <div class="roadmap-desc">Going deeper into infrastructure. Learning to provision, automate, monitor, and secure cloud environments at scale using IaC tools, CI/CD pipelines, and containerized deployments. This is where operational thinking kicks in.</div>
+        <div class="roadmap-skills">
+          <span class="tag">Terraform</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">Monitoring</span>
+          <span class="tag">IAM & Security</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="roadmap-step reveal">
+      <div class="roadmap-dot-wrap">
+        <div class="roadmap-dot future"></div>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-phase later">→ Phase 04</div>
+        <div class="roadmap-role">Senior Cloud Engineer / Tech Lead</div>
+        <div class="roadmap-desc">Leading cloud projects and teams. Owning the design of cloud-native systems, driving best practices across organizations, and mentoring engineers. Earning advanced certifications (AWS Solutions Architect, GCP Professional) to validate expertise.</div>
+        <div class="roadmap-skills">
+          <span class="tag">System Design</span>
+          <span class="tag">Architecture Patterns</span>
+          <span class="tag">AWS SAA / GCP Pro</span>
+          <span class="tag">Technical Leadership</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5: GOAL -->
+    <div class="roadmap-step reveal">
+      <div class="roadmap-dot-wrap">
+        <div class="roadmap-dot goal"></div>
+      </div>
+      <div class="roadmap-card goal-card">
+        <div class="roadmap-phase goal">★ Destination — Phase 05</div>
+        <div class="roadmap-role">Cloud Architect</div>
+        <div class="roadmap-desc">The destination. Designing cloud strategies from the ground up — selecting the right services, defining network topology, ensuring high availability, disaster recovery, and compliance. Translating business requirements into resilient, future-proof cloud infrastructure that scales to millions of users.</div>
+        <div class="roadmap-skills">
+          <span class="tag">Enterprise Architecture</span>
+          <span class="tag">Multi-Cloud Strategy</span>
+          <span class="tag">Cost Optimization</span>
+          <span class="tag">HA & DR Design</span>
+          <span class="tag">Security Architecture</span>
+          <span class="tag">Stakeholder Communication</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- CONTACT -->
 <div class="contact-section" id="contact">
   <div class="contact-glow"></div>
-  <div class="section-label" style="text-align:center; margin-bottom:0.5rem">03 / contact</div>
+  <div class="section-label" style="text-align:center; margin-bottom:0.5rem">04 / contact</div>
   <div class="section-title reveal">Let's Connect</div>
   <p class="contact-sub reveal">I'm always open to learning opportunities, internships, and conversations about data.</p>
 
