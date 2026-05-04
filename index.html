@@ -25,11 +25,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a:hover{color:var(--green);}
 
 /* HERO */
-.hero-wrap{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;}
+.hero-wrap{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;justify-content:center;}
 .hero-grid{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,245,196,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,196,.03) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
 @keyframes gridMove{0%{background-position:0 0;}100%{background-position:60px 60px;}}
-.hero-glow1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,245,196,.07) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none;}
-.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(123,97,255,.06) 0%,transparent 70%);bottom:50px;left:50px;pointer-events:none;}
+.hero-glow1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,245,196,.07) 0%,transparent 70%);top:-150px;right:5%;pointer-events:none;}
+.hero-glow2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(123,97,255,.06) 0%,transparent 70%);bottom:50px;left:5%;pointer-events:none;}
 .hero-inner{position:relative;z-index:1;width:100%;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:8rem 4rem 4rem;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 .hero-content{animation:fadeUp .9s ease both;}
@@ -59,7 +59,8 @@ h1{font-size:clamp(2.8rem,4vw,4.5rem);font-weight:800;line-height:1.05;letter-sp
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
 
 /* LAYOUT */
-.divider{height:1px;background:var(--border);max-width:1300px;margin:0 auto;}
+.divider{width:100%;padding:0 4rem;box-sizing:border-box;}
+.divider::after{content:'';display:block;height:1px;background:var(--border);}
 section{padding:6rem 4rem;max-width:1300px;margin:0 auto;width:100%;}
 .sec-label{font-family:var(--mono);font-size:.68rem;color:var(--green);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.6rem;}
 .sec-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:2.8rem;}
@@ -152,32 +153,48 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
 .ft{font-family:var(--mono);font-size:.68rem;color:var(--muted);}
 .fa{color:var(--green);}
 
-/* DESKTOP */
+/* DESKTOP BASE — 1024px+ */
 @media(min-width:1024px){
   nav{padding:1.2rem 6rem;}
-  .hero-inner{padding:10rem 6rem 6rem;}
-  section{padding:7rem 6rem;}
-  .contact-wrap{padding:7rem 6rem;}
-  footer{padding:1.8rem 6rem;}
-  .skills-grid{grid-template-columns:repeat(3,1fr);}
+  .hero-wrap{justify-content:center;}
+  .hero-inner{padding:10rem 6rem 6rem;max-width:1300px;gap:5rem;grid-template-columns:1.1fr 0.9fr;}
+  h1{font-size:clamp(3.2rem,4.5vw,5rem);}
+  .hero-bio{font-size:1.05rem;max-width:480px;}
+  .terminal{max-width:480px;}
+  section{padding:7rem 6rem;max-width:1300px;}
+  .about-grid{gap:6rem;}
+  .skills-grid{grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+  .journey{max-width:820px;}
+  .jcard{padding:1.6rem 2rem;}
+  .jrole{font-size:1.2rem;}
+  .contact-wrap{padding:7rem 6rem;max-width:1300px;}
+  footer{padding:2rem 6rem;max-width:1300px;margin:0 auto;}
+  .divider{max-width:1300px;}
 }
+
+/* LARGE DESKTOP — 1440px+ */
 @media(min-width:1440px){
   nav{padding:1.4rem 8rem;}
-  .hero-inner{padding:10rem 8rem 6rem;}
-  section{padding:8rem 8rem;}
-  .contact-wrap{padding:8rem;}
-  footer{padding:1.8rem 8rem;}
+  .hero-inner{padding:10rem 8rem 6rem;max-width:1500px;}
+  section{padding:8rem 8rem;max-width:1500px;}
+  .contact-wrap{padding:8rem;max-width:1500px;}
+  footer{padding:2rem 8rem;max-width:1500px;}
+  .divider{max-width:1500px;}
 }
+
+/* MOBILE */
 @media(max-width:768px){
   nav{padding:1rem 1.5rem;}
   .nav-links{gap:.8rem;}
   .nav-links a{font-size:.58rem;}
   .hero-inner{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:2.5rem;}
+  .hero-visual{justify-content:flex-start;}
   section{padding:4rem 1.5rem;}
   .contact-wrap{padding:4rem 1.5rem;}
   footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;}
   .about-grid{grid-template-columns:1fr;gap:2rem;}
   .skills-grid{grid-template-columns:1fr;}
+  .mblock{max-width:100%;}
 }
 </style>
 </head>
@@ -302,15 +319,4 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
       <span class="sbadge sb-todo">Not Started Yet</span>
       <div class="s-cat">Databases</div>
       <div class="s-name">SQL and Databases</div>
-      <div class="s-desc">Querying, schema design, and understanding how relational data is stored, indexed, and retrieved at scale.</div>
-      <div class="s-tags"><span class="tag">SQL</span><span class="tag">MySQL</span><span class="tag">PostgreSQL</span></div>
-    </div>
-    <div class="s-card s-todo reveal">
-      <span class="sbadge sb-todo">Not Started Yet</span>
-      <div class="s-cat">CS Fundamentals</div>
-      <div class="s-name">Data Structures and Algorithms</div>
-      <div class="s-desc">Building problem-solving foundations — arrays, linked lists, trees, sorting, and algorithmic thinking.</div>
-      <div class="s-tags"><span class="tag">DSA</span><span class="tag">Problem Solving</span><span class="tag">OOP</span></div>
-    </div>
-    <div class="s-card s-todo reveal">
-      <span class="sbadge sb-todo">Not
+      <div class="s-desc">Querying, schema design, and understanding how relational data is stor
