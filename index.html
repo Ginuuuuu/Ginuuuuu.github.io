@@ -25,15 +25,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a:hover{color:var(--green);}
 
 /* HERO */
-.hero-wrap{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;}
+.hero-wrap{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;justify-content:center;}
 .hero-grid{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,245,196,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,196,.03) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
 @keyframes gridMove{0%{background-position:0 0;}100%{background-position:60px 60px;}}
-.hero-glow1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,245,196,.07) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none;}
-.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(123,97,255,.06) 0%,transparent 70%);bottom:50px;left:50px;pointer-events:none;}
+.hero-glow1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,245,196,.07) 0%,transparent 70%);top:-150px;right:5%;pointer-events:none;}
+.hero-glow2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(123,97,255,.06) 0%,transparent 70%);bottom:50px;left:5%;pointer-events:none;}
 .hero-inner{position:relative;z-index:1;width:100%;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:8rem 4rem 4rem;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-.hero-content{animation:fadeUp .9s ease both;}
-.hero-visual{animation:fadeUp .9s .2s ease both;display:flex;justify-content:center;}
+.hero-content{animation:none;opacity:1;}
+.hero-visual{animation:none;opacity:1;display:flex;justify-content:center;}
 .hero-tag{font-family:var(--mono);font-size:.7rem;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:.6rem;}
 .hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--green);}
 h1{font-size:clamp(2.8rem,4vw,4.5rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.4rem;}
@@ -59,12 +59,12 @@ h1{font-size:clamp(2.8rem,4vw,4.5rem);font-weight:800;line-height:1.05;letter-sp
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
 
 /* LAYOUT */
-.divider{height:1px;background:var(--border);max-width:1300px;margin:0 auto;}
+.divider{width:100%;padding:0 4rem;box-sizing:border-box;}
+.divider::after{content:'';display:block;height:1px;background:var(--border);}
 section{padding:6rem 4rem;max-width:1300px;margin:0 auto;width:100%;}
 .sec-label{font-family:var(--mono);font-size:.68rem;color:var(--green);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.6rem;}
 .sec-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:2.8rem;}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal{opacity:1;transform:none;}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
@@ -152,32 +152,48 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
 .ft{font-family:var(--mono);font-size:.68rem;color:var(--muted);}
 .fa{color:var(--green);}
 
-/* DESKTOP */
+/* DESKTOP BASE — 1024px+ */
 @media(min-width:1024px){
   nav{padding:1.2rem 6rem;}
-  .hero-inner{padding:10rem 6rem 6rem;}
-  section{padding:7rem 6rem;}
-  .contact-wrap{padding:7rem 6rem;}
-  footer{padding:1.8rem 6rem;}
-  .skills-grid{grid-template-columns:repeat(3,1fr);}
+  .hero-wrap{justify-content:center;}
+  .hero-inner{padding:10rem 6rem 6rem;max-width:1300px;gap:5rem;grid-template-columns:1.1fr 0.9fr;}
+  h1{font-size:clamp(3.2rem,4.5vw,5rem);}
+  .hero-bio{font-size:1.05rem;max-width:480px;}
+  .terminal{max-width:480px;}
+  section{padding:7rem 6rem;max-width:1300px;}
+  .about-grid{gap:6rem;}
+  .skills-grid{grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+  .journey{max-width:820px;}
+  .jcard{padding:1.6rem 2rem;}
+  .jrole{font-size:1.2rem;}
+  .contact-wrap{padding:7rem 6rem;max-width:1300px;}
+  footer{padding:2rem 6rem;max-width:1300px;margin:0 auto;}
+  .divider{max-width:1300px;}
 }
+
+/* LARGE DESKTOP — 1440px+ */
 @media(min-width:1440px){
   nav{padding:1.4rem 8rem;}
-  .hero-inner{padding:10rem 8rem 6rem;}
-  section{padding:8rem 8rem;}
-  .contact-wrap{padding:8rem;}
-  footer{padding:1.8rem 8rem;}
+  .hero-inner{padding:10rem 8rem 6rem;max-width:1500px;}
+  section{padding:8rem 8rem;max-width:1500px;}
+  .contact-wrap{padding:8rem;max-width:1500px;}
+  footer{padding:2rem 8rem;max-width:1500px;}
+  .divider{max-width:1500px;}
 }
+
+/* MOBILE */
 @media(max-width:768px){
   nav{padding:1rem 1.5rem;}
   .nav-links{gap:.8rem;}
   .nav-links a{font-size:.58rem;}
   .hero-inner{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:2.5rem;}
+  .hero-visual{justify-content:flex-start;}
   section{padding:4rem 1.5rem;}
   .contact-wrap{padding:4rem 1.5rem;}
   footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;}
   .about-grid{grid-template-columns:1fr;gap:2rem;}
   .skills-grid{grid-template-columns:1fr;}
+  .mblock{max-width:100%;}
 }
 </style>
 </head>
@@ -247,7 +263,7 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
 <section id="about">
   <div class="sec-label">01 / about</div>
   <div class="sec-title">Who I Am</div>
-  <div class="about-grid reveal">
+  <div class="about-grid">
     <div class="about-text">
       <p>I'm <strong>Reshin Ginu R S</strong>, a first-year B.Tech student with one clear destination: <strong>Cloud Architect</strong>. My journey is intentional and structured — every skill I build today is a stepping stone toward designing enterprise-grade cloud systems tomorrow.</p>
       <p>I started at the foundation. My first programming language was <strong>C</strong> — mastering logic, memory, and how computers actually work at a low level. Now I'm building upward toward Python, SQL, data engineering, and eventually cloud infrastructure.</p>
@@ -313,4 +329,183 @@ footer{border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justi
       <div class="s-tags"><span class="tag">DSA</span><span class="tag">Problem Solving</span><span class="tag">OOP</span></div>
     </div>
     <div class="s-card s-todo reveal">
-      <span class="sbadge sb-todo">Not
+      <span class="sbadge sb-todo">Not Started Yet</span>
+      <div class="s-cat">Data Engineering</div>
+      <div class="s-name">ETL Pipelines</div>
+      <div class="s-desc">Extraction, transformation, and loading — the backbone of every data engineering role.</div>
+      <div class="s-tags"><span class="tag">ETL</span><span class="tag">Apache Spark</span><span class="tag">Airflow</span></div>
+    </div>
+    <div class="s-card s-todo reveal">
+      <span class="sbadge sb-todo">Not Started Yet</span>
+      <div class="s-cat">Cloud Platforms</div>
+      <div class="s-name">Cloud Fundamentals</div>
+      <div class="s-desc">Understanding AWS, Azure, and GCP — services, networking, and how modern infrastructure is managed in the cloud.</div>
+      <div class="s-tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span></div>
+    </div>
+    <div class="s-card s-todo reveal">
+      <span class="sbadge sb-todo">Not Started Yet</span>
+      <div class="s-cat">Dev Tools</div>
+      <div class="s-name">Git and Linux</div>
+      <div class="s-desc">Version control, collaboration workflows, and navigating a Linux-based development environment.</div>
+      <div class="s-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Linux</span></div>
+    </div>
+  </div>
+
+  <!-- MOTIVATION CODE -->
+  <div class="mblock reveal">
+    <div class="mbar">
+      <div class="td"></div><div class="td"></div><div class="td"></div>
+      <span class="mtitle">reshin_mindset.c</span>
+    </div>
+    <pre class="mcode"><span class="mcmt">// My personal operating system</span>
+
+<span class="mkw">while</span> (me.alive) {
+
+    me.<span class="mfn">eat</span>();
+    me.<span class="mfn">sleep</span>();
+    me.<span class="mfn">code</span>();
+
+    <span class="mkw">if</span> (life.<span class="mprop">stucks</span>) {
+
+        <span class="mfn">debug</span>(life, code);
+
+    } <span class="mkw">else</span> {
+
+        <span class="mkw">continue</span>;
+
+    }
+}
+
+<span class="mcmt">// No exit condition.</span>
+<span class="mcmt">// The loop never stops. &#x1F680;</span></pre>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="sec-label">03 / goals and vision</div>
+  <div class="sec-title">My Journey to Cloud Architect</div>
+  <p class="vision-intro">This is my personal roadmap — not a wish list, but a plan with intention behind every step. I know where I am, I know where I am going, and I know exactly how I am getting there.</p>
+
+  <div class="journey">
+
+    <div class="jstep reveal">
+      <div class="jleft"><div class="jicon ji-now">&#x1F393;</div><div class="jline"></div></div>
+      <div class="jcard jc-now">
+        <div class="jstatus js-now">Where I Am Now</div>
+        <div class="jrole">B.Tech Student — Year 1</div>
+        <div class="jdesc">Building my programming foundation. Completed C Language and now exploring the world of data and cloud. Every great architect started here — at the beginning, learning to think like an engineer.</div>
+        <div class="jskills">Current: <span>C Language (done) · Problem Solving · CS Fundamentals</span></div>
+      </div>
+    </div>
+
+    <div class="jarrow reveal"><div class="jaline"></div><div class="jachev">&#x2193;</div><div class="jatext">First career role</div></div>
+
+    <div class="jstep reveal">
+      <div class="jleft"><div class="jicon ji-g1">&#x2699;&#xFE0F;</div><div class="jline"></div></div>
+      <div class="jcard jc-g1">
+        <div class="jstatus js-g1">Goal 1</div>
+        <div class="jrole">Data Engineer</div>
+        <div class="jdesc">Master the full data lifecycle — ingestion, transformation, and serving. Build reliable, scalable pipelines that power real decisions. Every cloud architect who's worth their title once built pipelines by hand.</div>
+        <div class="jskills">Skills to build: <span>Python · SQL · ETL · Apache Spark · Airflow · Data Warehousing</span></div>
+        <div class="jwhy">You can't architect data systems you've never built. Pipelines first.</div>
+      </div>
+    </div>
+
+    <div class="jarrow reveal"><div class="jaline"></div><div class="jachev">&#x2193;</div><div class="jatext">Move to the cloud</div></div>
+
+    <div class="jstep reveal">
+      <div class="jleft"><div class="jicon ji-g2">&#x2601;&#xFE0F;</div><div class="jline"></div></div>
+      <div class="jcard jc-g2">
+        <div class="jstatus js-g2">Goal 2</div>
+        <div class="jrole">Cloud Data Engineer</div>
+        <div class="jdesc">Lift pipelines to the cloud. Learn how AWS, Azure, and GCP host, process, and serve data at enterprise scale using managed services, serverless architecture, and cloud-native storage.</div>
+        <div class="jskills">Skills to build: <span>AWS Glue · BigQuery · Azure Data Factory · Data Lakes · Terraform Basics</span></div>
+        <div class="jwhy">Real data engineering lives in the cloud. This step bridges data and infrastructure.</div>
+      </div>
+    </div>
+
+    <div class="jarrow reveal"><div class="jaline"></div><div class="jachev">&#x2193;</div><div class="jatext">Go deeper into infra</div></div>
+
+    <div class="jstep reveal">
+      <div class="jleft"><div class="jicon ji-g3">&#x1F6E0;&#xFE0F;</div><div class="jline"></div></div>
+      <div class="jcard jc-g3">
+        <div class="jstatus js-g3">Goal 3</div>
+        <div class="jrole">Cloud / DevOps Engineer</div>
+        <div class="jdesc">Expand beyond data into full cloud infrastructure. Learn to provision, automate, secure, and monitor cloud environments at scale using IaC, CI/CD pipelines, and containerized deployments.</div>
+        <div class="jskills">Skills to build: <span>Terraform · Docker · Kubernetes · CI/CD · IAM and Security · Monitoring</span></div>
+        <div class="jwhy">Architects who don't understand ops design systems that fail in production.</div>
+      </div>
+    </div>
+
+    <div class="jarrow reveal"><div class="jaline"></div><div class="jachev">&#x2193;</div><div class="jatext">Lead and certify</div></div>
+
+    <div class="jstep reveal">
+      <div class="jleft"><div class="jicon ji-g4">&#x1F3C5;</div><div class="jline"></div></div>
+      <div class="jcard jc-g4">
+        <div class="jstatus js-g4">Goal 4</div>
+        <div class="jrole">Senior Cloud Engineer / Tech Lead</div>
+        <div class="jdesc">Lead cloud projects and teams. Own architecture decisions end to end. Earn certifications that validate expertise at the highest level — transitioning from builder to decision-maker.</div>
+        <div class="jskills">Certifications: <span>AWS Solutions Architect · GCP Professional · Azure Expert</span></div>
+        <div class="jwhy">Great architects lead people, not just systems. This phase builds both.</div>
+      </div>
+    </div>
+
+    <div class="jarrow reveal"><div class="jaline"></div><div class="jachev">&#x2193;</div><div class="jatext">Final destination</div></div>
+
+    <div class="jstep reveal">
+      <div class="jleft"><div class="jicon ji-goal">&#x2605;</div></div>
+      <div class="jcard jc-goal">
+        <div class="jstatus js-goal">Ultimate Goal</div>
+        <div class="jrole jrole-final">Cloud Architect</div>
+        <div class="jdesc">Design cloud strategies from the ground up. Select the right services, define network topology, ensure high availability, disaster recovery, and compliance. Translate business requirements into resilient, scalable infrastructure that serves millions. This is what every step above is building toward.</div>
+        <div class="jskills">Domain: <span>Enterprise Architecture · Multi-Cloud · HA/DR Design · Cost Optimization · Security Architecture</span></div>
+        <div class="fquote">"The architect sees the whole building. I'm learning to lay every brick first."</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="c-glow"></div>
+  <div class="sec-label" style="text-align:center;margin-bottom:.5rem;">04 / contact</div>
+  <div class="sec-title reveal" style="margin-bottom:1rem;">Let's Connect</div>
+  <p class="contact-sub reveal">Open to internships, collaborations, and conversations about data and cloud.</p>
+  <div class="c-links reveal">
+    <a href="mailto:reshinginu0026@gmail.com" class="c-link">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      reshinginu0026@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/reshinginu" target="_blank" class="c-link">
+      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/Ginuuuuu" target="_blank" class="c-link">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="https://www.instagram.com/reshin.___" target="_blank" class="c-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">2025 <span class="fa">Reshin Ginu R S</span></div>
+  <div class="ft">Built with passion for <span class="fa">data and cloud</span></div>
+</footer>
+
+<script>
+// No JS animations - everything visible by default for reliability
+</script>
+</body>
+</html>
